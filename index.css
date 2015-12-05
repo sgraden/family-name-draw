@@ -1,0 +1,89 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+body {
+	background-color: dodgerblue;
+	font-family: helvetica;
+	font-weight: lighter;
+}
+
+#main {
+	position: relative;
+	/*display: flex;
+	justify-content: center;
+	align-items: center;*/
+    overflow: auto;
+    height: 100%;
+}
+
+#main > #content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+  	transform: translate(-50%, -50%);
+  	z-index: 1;
+	
+	background-color: white;
+    overflow: auto;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    text-align: center;
+}
+
+#content > div {
+/*	margin: 0 0 20px 0;
+*/	padding: 25px 30px 20px 30px;
+
+}
+
+#title {
+	font-size: 35pt;
+/*	font-weight: bolder;
+*/}
+
+#name_output {
+	font-size: 32pt;
+	min-height: 70px;
+	line-height: 70px;
+}
+
+#sky {
+	background-color: dodgerblue;
+	height: 65%;
+}
+#snow {
+	background-color: white;
+	height: 35%;
+	width: 100%;
+}
+
+h1 {
+	font-weight: lighter;
+}
+
+.bt {
+	text-align: center;
+	background-color: dodgerblue;
+	color: white;
+	border: 2px solid dodgerblue;
+	cursor: pointer;
+	user-select: none;
+	transition: background-color .2s, color .2s;
+}
+
+.bt:hover {
+	background-color: white;
+	color: dodgerblue;
+}
+
+.bt.lg {
+	padding: 5px 10px;
+	font-size: 20pt;
+}
+
+.bt.sm {
+	padding: 3px 7px;
+}

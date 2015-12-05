@@ -1,0 +1,5 @@
+Show a button to draw a name randomly
+Prevent a person from picking twice using a cookie on the device (they won't care enough)
+Need to remove people from the options after click by marking "chosen" 
+
+Input by a number of fields after showing which ones exist already
