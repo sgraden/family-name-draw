@@ -9,6 +9,9 @@
 	var bubbleTimer;
 	var bubbles = [];
 	var then;
+	var letters = [];
+	var xmasColors = ["#016A3B", "#F8C82E", "#6180BD", "#EA2738", "#EF5B21"];
+
 	window.onload = function() {
 		checkIfDrawn();	//See if user has already drawn. Allow again if "got self"
 
@@ -20,6 +23,8 @@
 				//Store which name was pulled?
 		});
 
+		//letters = document.getElementById("title").innerHTML;
+		//christmasLights();
 		window.addEventListener('resize', resizeCanvas, false);
 		makeCanvas();	
 
@@ -165,5 +170,12 @@
 	    this.speed = speed;
 	    this.step = 0;
 	};
+
+	function christmasLights() {
+		console.log(letters);
+		for (var i = 0; i < letters.split().length; i++) {
+			letters[i].style.color = xmasColors[Math.floow(Math.random() * 5)];
+		}
+	}
 
 })();

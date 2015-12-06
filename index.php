@@ -9,13 +9,14 @@
 	<div id="main">
 		<div id="content">
 			<div id="title">
-				Raden Christmas 2015!
+				Christmas 2015
 			</div>
 			<!-- <div class="content"> -->
 				<div id="name_output">
+					<span class="place_holder">Getting a gift for...</span>
 				</div>
 				<div>
-					<button id="draw_name" class="bt lg">Draw Name</button>
+					<button id="draw_name" class="bt lg">draw a name</button>
 				</div>
 			<!-- </div> -->
 		</div>
