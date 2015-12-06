@@ -19,8 +19,9 @@
 				</div>
 			<!-- </div> -->
 		</div>
-		<div id="sky"></div>
-		<div id="snow"></div>
+		<!-- <div id="sky"></div>
+		<div id="snow"></div> -->
+		<div id="canvas-container"></div>
 	</div>
 </body>
 </html>
