@@ -13,7 +13,7 @@
 			</div>
 			<!-- <div class="content"> -->
 				<div id="name_output">
-					<span class="place_holder">Getting a gift for...</span>
+					<span class="place_holder">getting a gift for...</span>
 				</div>
 				<div>
 					<button id="draw_name" class="bt lg">draw a name</button>

@@ -19,7 +19,7 @@
 		data = initialDraw();
 		document.getElementById("draw_name")
 			.addEventListener("click", function(e) {
-				drawName(data);
+				drawName(data); //rotate box?
 				//Store which name was pulled?
 		});
 
