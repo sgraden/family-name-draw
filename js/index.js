@@ -18,7 +18,7 @@ window.onload = function() {
 	checkIfDrawn();	//See if user has already drawn. Allow again if "got self"
 
 	request = new XMLHttpRequest();
-	httpRequest('req.php?action=getNames', setData);
+	httpRequest('req.php?action=getNames', setData); //Lazy and tell to check every 5 sec?
 	document.getElementById("draw_name").addEventListener("click", function(e) {
 		if (data.length > 0) { //There is data
 			drawName(data); //rotate box?
