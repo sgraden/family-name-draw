@@ -11,6 +11,7 @@ var bubbleTimer;
 var bubbles = [];
 var then;
 var chosen;
+var drawn = 0;
 var letters = [];
 var xmasColors = ["#016A3B", "#F8C82E", "#6180BD", "#EA2738", "#EF5B21"];
 
@@ -22,19 +23,19 @@ window.onload = function() {
 	document.getElementById("draw_name").addEventListener("click", function(e) {
 		if (data.length > 0) { //There is data
 			drawName(data); //rotate box?
-		} else { //No data or all names chosen
+		} else { 
+			//No data or all names chosen
 			document.getElementById("name_output").innerHTML = 
 				"<span class='place_holder'>Oh No! All names chosen</span>";
 		}
-		//Store which name was pulled?
 	});
 
-	//letters = document.getElementById("title").innerHTML;
-	//christmasLights();
+	// letters = document.getElementById("title").innerHTML;
+	// christmasLights();
 	window.addEventListener('resize', resizeCanvas, false); //Resize canvas
 	makeCanvas();	
-
 	bubbleTimer = setInterval(generateBubbles, 50);
+
 	var then = Date.now();
 	main();
 };
@@ -57,6 +58,8 @@ function httpRequest(url, callback) {
 			}
 		} else {
 			//not done
+			console.log("not done");
+			
 		}
 	};
 	request.open('GET', url, true);
@@ -76,13 +79,16 @@ function drawName() {
 	}
 	output.innerHTML = chosen.name;
 	setCookie("hasDrawn", 1, 7);
-	httpRequest("req.php?action=updateName&uid=" + chosen.id); //Need to add name info
+	httpRequest("req.php?action=updateName&uid=" + chosen.id);
 }
 
 function checkIfDrawn() {
-	var drawn = parseInt(getCookie("hasDrawn"));
+	drawn = parseInt(getCookie("hasDrawn"));
+	console.log(drawn);
 	if (drawn == 1) {
-		//disable things and output message
+		document.getElementById("draw_name").disabled = true;
+		document.getElementById("name_output").innerHTML = 
+				"<span class='place_holder'>Hey! You have already chosen!</span>";
 	}
 }
 
@@ -187,7 +193,7 @@ var Bubble = function(x, y, rad, speed) {
 function christmasLights() {
 	console.log(letters);
 	for (var i = 0; i < letters.split().length; i++) {
-		letters[i].style.color = xmasColors[Math.floow(Math.random() * 5)];
+		letters[i].style.color = xmasColors[Math.floor(Math.random() * 5)];
 	}
 }
 

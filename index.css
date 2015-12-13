@@ -64,17 +64,23 @@ body {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	top 0;
-	left 0;
+	top: 0;
+	left: 0;
 }
 
 .place_holder {
-	color: grey;
+	color: gray;
 	font-size: smaller;
 }
 
 h1 {
 	font-weight: lighter;
+}
+
+button.bt[disabled], button.bt[disabled]:hover {
+	background-color: lightgray;
+	border-color: gray;
+	color: gray;
 }
 
 .bt {

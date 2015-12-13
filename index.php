@@ -17,6 +17,7 @@
 				</div>
 				<div>
 					<button id="draw_name" class="bt lg">draw a name</button>
+					<span class="bad_pull">i got my name</span>
 				</div>
 			<!-- </div> -->
 		</div>
