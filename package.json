@@ -10,13 +10,14 @@
   "author": "Steven Raden",
   "license": "ISC",
   "dependencies": {
-    "browser-sync": "^2.10.1",
     "express": "^4.13.3",
     "gulp": "^3.9.0",
     "hbs": "^4.0.0",
-    "nodemon": "^1.8.1"
+    "node-mysql": "^0.4.2"
   },
   "devDependencies": {
-    "gulp-nodemon": "^2.0.4"
+    "gulp-nodemon": "^2.0.4",
+    "browser-sync": "^2.10.1",
+    "nodemon": "^1.8.1"
   }
 }
