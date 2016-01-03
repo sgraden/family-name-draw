@@ -6,6 +6,10 @@ var path = require("path"); //Used to deliver html files
 var mysql = require("mysql"); //Connect to mysql
 var hbs = require("hbs"); //Render handlebars
 
+//Socket stuff
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 //Create a mysql connection to localhost (dev only)
 var conn = mysql.createConnection({
     host: "localhost",
@@ -17,10 +21,12 @@ var conn = mysql.createConnection({
 //App configurations
 app.use('/public', express.static(__dirname + '/public')); //Configure the root of the folder
 app.set("view engine", "html");
+app.set("port", 8008);
 app.engine("html", hbs.__express); //set view engine to handlebars
 
 //Root directory deliver html
-app.get("/", function (req, res) {
+//Should check if user has already drawn and set text appropriately instead of doing on front end
+app.get("/", function (req, res) { 
 	res.sendFile(path.join(__dirname, "public", "views", "index.html")); //Send back html file
 });
 
@@ -45,6 +51,15 @@ app.get("/Hi", function (req, res) {
 	res.render("index", {name:"bob", greeting:"jonathan"}); //Handlebars stuff
 });
 
-app.listen(8008, function () {
-	console.info('Server listening on port ' + this.address().port);
+http.listen(app.port, function () {
+	console.info('Server listening on port ' + app.port);
+});
+
+//Socket listeners
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
+
+http.listen(3000, function(){
+  console.log('listening on *:3000');
 });
