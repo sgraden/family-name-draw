@@ -12,7 +12,7 @@ gulp.task('browser-sync', ['nodemon'], function() {
 		proxy: "http://localhost:8008",
 		files: ["public/**/*.*"],
         //browser: "chromium-browser", //For chromium
-		browser: "google-chrome", //For mac
+		browser: ["google chrome", "google-chrome"], //For mac and ubuntu
 		port: 8000
 	});
 });
