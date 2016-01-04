@@ -14,14 +14,14 @@ var io = require('socket.io')(http);
 var conn = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Magnitude_9",
+    password: "password",
     database: "fam"
 });
 
 //App configurations
 app.use('/public', express.static(__dirname + '/public')); //Configure the root of the folder
 app.set("view engine", "html");
-app.set("port", 8008);
+//app.set("port", 8008);
 app.engine("html", hbs.__express); //set view engine to handlebars
 
 //Root directory deliver html
@@ -51,8 +51,8 @@ app.get("/Hi", function (req, res) {
 	res.render("index", {name:"bob", greeting:"jonathan"}); //Handlebars stuff
 });
 
-http.listen(app.port, function () {
-	console.info('Server listening on port ' + app.port);
+app.listen(8008, function () {
+	console.info('Server listening on port ');
 });
 
 //Socket listeners

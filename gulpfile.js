@@ -11,7 +11,8 @@ gulp.task('browser-sync', ['nodemon'], function() {
 	browserSync.init(null, {
 		proxy: "http://localhost:8008",
 		files: ["public/**/*.*"],
-		browser: "google chrome",
+        //browser: "chromium-browser", //For chromium
+		browser: "google-chrome", //For mac
 		port: 8000
 	});
 });
@@ -27,3 +28,9 @@ gulp.task('nodemon', function (cb) {
 		}
 	})
 });
+
+// Handle the error
+function errorHandler (error) {
+  console.log(error.toString());
+  this.emit('end');
+}
