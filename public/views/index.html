@@ -2,8 +2,9 @@
 <html>
 <head>
 	<title>Draw a Name!</title>
-	<script type="text/javascript" src="js/index.js"></script>
-	<link rel="stylesheet" type="text/css" href="index.css">
+    <script type="text/javascript" src="public/js/socket.io.js"></script>
+	<script type="text/javascript" src="public/js/index.js"></script>
+	<link rel="stylesheet" type="text/css" href="public/styles/index.css">
 </head>
 <body>
 	<div id="main">
@@ -12,12 +13,13 @@
 				Christmas 2015
 			</div>
 			<!-- <div class="content"> -->
+
 				<div id="name_output">
 					<span class="place_holder">getting a gift for...</span>
 				</div>
 				<div>
 					<button id="draw_name" class="bt lg">draw a name</button>
-					<span class="bad_pull">i got my name</span>
+                    <button id="redraw_name" class="hidden bt lg">this is my name</button>
 				</div>
 			<!-- </div> -->
 		</div>

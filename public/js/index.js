@@ -1,25 +1,29 @@
 "use strict";
 
 //Redraw should only be able to be done once. Mark which one was chosen
+//Then prevent further clicks except when thye have gotten their own name.
 (function() {
+    
+var socket = io();
 
+//Server information
 var request;
 var data = [];
+var chosen;
+//var drawn = 0; //Have they drawn?
+
+//Canvas drawing tools
 var canvas;
 var ctx;
 var bubbleTimer;
 var bubbles = [];
 var then;
-var chosen;
-var drawn = 0;
-var letters = [];
-var xmasColors = ["#016A3B", "#F8C82E", "#6180BD", "#EA2738", "#EF5B21"];
 
 window.onload = function() {
 	checkIfDrawn();	//See if user has already drawn. Allow again if "got self"
 
 	request = new XMLHttpRequest();
-	httpRequest('req.php?action=getNames', setData); //Lazy and tell to check every 5 sec?
+	httpRequest('get_names', setData); //Lazy and tell to check every 5 sec?
 	document.getElementById("draw_name").addEventListener("click", function(e) {
 		if (data.length > 0) { //There is data
 			drawName(data); //rotate box?
@@ -43,7 +47,7 @@ window.onload = function() {
 //Pull data from server on page load
 function httpRequest(url, callback) {
 	request.onreadystatechange = function() {
-		if (request.readyState === XMLHttpRequest.DONE) {
+		if (request.readyState === XMLHttpRequest.DONE) { //should be 4
 			//good stuff
 			if (request.status === 200) {
 				if (typeof(callback) == "function") {
@@ -51,15 +55,14 @@ function httpRequest(url, callback) {
 					callback(JSON.parse(request.responseText));	
 				}
 			} else {
-				console.log(request.status, request.responseText);
+				console.log("req status: " + request.status, request.responseText);
 			    // there was a problem with the request,
 			    // for example the response may contain a 404 (Not Found)
 			    // or 500 (Internal Server Error) response code
 			}
 		} else {
 			//not done
-			console.log("not done");
-			
+			console.log("not done", request.readyState);
 		}
 	};
 	request.open('GET', url, true);
@@ -79,16 +82,17 @@ function drawName() {
 	}
 	output.innerHTML = chosen.name;
 	setCookie("hasDrawn", 1, 7);
-	httpRequest("req.php?action=updateName&uid=" + chosen.id);
+	//httpRequest("req.php?action=updateName&uid=" + chosen.id);
 }
 
+//Sets text at load to prevent redrawing
 function checkIfDrawn() {
-	drawn = parseInt(getCookie("hasDrawn"));
+	var drawn = parseInt(getCookie("hasDrawn"));
 	console.log(drawn);
-	if (drawn == 1) {
+	if (drawn == 1) { //Should work even when not set
 		document.getElementById("draw_name").disabled = true;
 		document.getElementById("name_output").innerHTML = 
-				"<span class='place_holder'>Hey! You have already chosen!</span>";
+				"<span class='place_holder'>you have already chosen!</span>";
 	}
 }
 
@@ -190,11 +194,15 @@ var Bubble = function(x, y, rad, speed) {
     this.step = 0;
 };
 
-function christmasLights() {
-	console.log(letters);
-	for (var i = 0; i < letters.split().length; i++) {
-		letters[i].style.color = xmasColors[Math.floor(Math.random() * 5)];
-	}
-}
+//Attempt to make festivities
+//var letters = [];
+//var xmasColors = ["#016A3B", "#F8C82E", "#6180BD", "#EA2738", "#EF5B21"];
+
+// function christmasLights() {
+// 	console.log(letters);
+// 	for (var i = 0; i < letters.split().length; i++) {
+// 		letters[i].style.color = xmasColors[Math.floor(Math.random() * 5)];
+// 	}
+// }
 
 })();
